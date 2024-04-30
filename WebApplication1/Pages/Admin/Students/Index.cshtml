@@ -1,0 +1,52 @@
+﻿@page
+@model WebApplication1.Pages.Admin.Students.IndexModel
+@{
+}
+
+<h2 class="text-center mb-5">Students</h2>
+
+<div class="row mb-5">
+    <div class="col">
+        <a class="btn btn-primary" href="/Admin/Students/Create">Add Student</a>
+    </div>
+
+    <div class="col">
+
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Middle name</th>
+        <th>Lastname</th>
+        <th>Date of birth</th>
+        <th>Guardian</th>
+        <th>Phone number</th>
+        <th>Image</th>
+        <th>Created at</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var student in Model.Students)
+    {
+        <tr>
+            <td>@student.Id</td>
+            <td>@student.firstname</td>
+            <td>@student.middlename</td>
+            <td>@student.lastname</td>
+            <td>@student.birthdate</td>
+            <td>@student.guardian</td>
+            <td>@student.phoneno</td>
+            <td><img src="/students/@student.img" width="100" /></td>
+            <td>@student.createdAt.ToString("MM/dd/yyyy")</td>
+            <td style="white-space:nowrap">
+                <a class="btn btn-primary btn-sm" href="/Admin/Students/Edit?id=@student.Id">Edit</a>
+                <a class="btn btn-danger btn-sm" href="/Admin/Students/Del?id=@student.Id">Delete</a>
+            </td>
+</tr>
+    }
+</table>
+
+            
